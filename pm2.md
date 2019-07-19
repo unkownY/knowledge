@@ -2,13 +2,13 @@
 
 > `node` 进程管理
 
-## 清除所有 `LOG`
+## 清除所有  _log_
 
 ```
 pm2 flush
 ```
 
-## 在 `cluster` 模式下,合并每个进程的 `log`
+## 在 _cluster_ 模式下,合并每个进程的 _log_
 ```js
     module.exports = {
       apps: [{
@@ -23,11 +23,10 @@ pm2 flush
 
 ## 日志 滚动
 
-
 ### 安装
 
-```node
-    pm2 install pm2-logrotate
+```shell
+pm2 install pm2-logrotate
 ```
 
 ### 参数
@@ -45,10 +44,17 @@ pm2 flush
 
 ### 设置参数
 
-```node
-    pm2 set pm2-logrotate:<param> <value>
+```shell
+pm2 set pm2-logrotate:<param> <value>
 ```
 e.g:
  * `pm2 set pm2-logrotate:max_size 1K (日志大小 1K)`
  * `pm2 set pm2-logrotate:compress true (进行日志压缩)`
  * `pm2 set pm2-logrotate:rotateInterval '*/1 * * * *' (每分钟滚动)`
+
+## 设置 开机启动
+```shell
+pm2 startup
+pm2 start ***
+pm2 save
+```
