@@ -6,4 +6,4 @@
 * [log4js](./log4js.md)
 * [pm2](./pm2.md)
 * [chrome](./chrome.md)
-* [linux shell](./linux-shell.md)
+* [linux](./linux-shell.md)
