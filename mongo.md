@@ -87,3 +87,27 @@ $and|例:$and:[{l:1},{k:1}]
 $not|例:$not:/^[a-z]$/
 $nor|例:$nor:[{l:1},{k:1}]
 $or|例:$or:[{l:1},{k:1}]
+
+### 安装
+
+#### [Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
+
+1. Import the public key used by the package management system 
+    * `wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -`
+1. Create a list file for MongoDB.
+    * Ubuntu 16.04 (Xenial): `echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list`
+    * Ubuntu 18.04 (Bionic): `echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list`
+1. Reload local package database
+    * `sudo apt-get update`
+1. Install the MongoDB packages.
+    * the latest version: `sudo apt-get install -y mongodb-org`
+    * specific release: `sudo apt-get install -y mongodb-org=4.2.0 mongodb-org-server=4.2.0 mongodb-org-shell=4.2.0 mongodb-org-mongos=4.2.0 mongodb-org-tools=4.2.0`
+1. Some Operation:
+    * Start : `sudo service mongod start`
+    * Stop : `sudo service mongod stop`
+    * Restart : `sudo service mongod restart`
+    * using : `mongo`
+1. File Default Location:
+    * logs: `/var/log/mongodb/mongod.log`
+    * config: `/etc/mongod.conf`
+    * bin: `/usr/bin/mongod`
