@@ -70,7 +70,7 @@ Code| 代码(用于存储JS代码)
 Regular expression|正则表达式
     
   ### 操作符
-  
+
 操作|名称
 ---|---
 等于|%eq
@@ -93,7 +93,7 @@ $or|例:$or:[{l:1},{k:1}]
 #### [Ubuntu](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
 
 1. Import the public key used by the package management system 
-    * `wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -`
+    * ` wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add - `
 1. Create a list file for MongoDB.
     * Ubuntu 16.04 (Xenial): `echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list`
     * Ubuntu 18.04 (Bionic): `echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list`

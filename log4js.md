@@ -40,3 +40,5 @@ app.use(log4js.connectLogger(log4js.getLogger('aboveWarning'),{
     nolog:''
 }));
 ```
+
+* `pm2` 需要安装插件 `pm2-intercom`

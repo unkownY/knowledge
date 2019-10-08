@@ -7,6 +7,7 @@
   * [pm2](./pm2.md)
   * [chrome](./chrome.md)
   * [linux](./linux.md)
+  * [socket.io](./socket.io.md)
 
 ## 色弱的我
   * [写给大家看的色彩书 1 - 设计配色基础](./color-base-1.md)
