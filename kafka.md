@@ -45,64 +45,7 @@
         npm install kafka-node
     ```
 * 使用
-    * 引入依赖
-        ```node
-            let {
-                Producer, // 生产者
-                Consumer, // 消费者
-                KafkaClient, // kafka连接
-            } = require('kafka-node');
-        ```
-
-    * 创建 实例
-
-        ```node
-            const client = new KafkaClient({kafkaHost: '10.3.100.196:9092'});
-        ```
-    * 创建 生产者
-
-        ```node 
-            let option = {
-                // Configuration for when to consider a message as acknowledged, default 1
-                requireAcks: 1,
-                // The amount of time in milliseconds to wait for all acks before considered, default 100ms
-                ackTimeoutMs: 100,
-                // Partitioner type (default = 0, random = 1, cyclic = 2, keyed = 3, custom = 4), default 0
-                PartitionerrType: 2
-            }
-            let producer = new Producer(client,option);
-        ```
-
-    * 创建 消费者 
-
-        ```node
-            // 获取 消息 的选项
-            let payloads = [{
-                topic: 'topicName',
-                offset: 0, //default 0
-                partition: 0 // default 0
-            }];
-            // 创建 消费者 的选项
-            let option = {
-                groupId: 'kafka-node-group',// 消费者组id,默认 `kafka-node-group`
-                // Auto commit config
-                autoCommit: true,
-                autoCommitIntervalMs: 5000,
-                // The max wait time is the maximum amount of time in milliseconds to block waiting if insufficient data is available at the time the request is issued, default 100ms
-                fetchMaxWaitMs: 100,
-                // This is the minimum number of bytes of messages that must be available to give a response, default 1 byte
-                fetchMinBytes: 1,
-                // The maximum bytes to include in the message set for this partition. This helps bound the size of the response.
-                fetchMaxBytes: 1024 * 1024,
-                // If set true, consumer will fetch message from the given offset in the payloads
-                fromOffset: false,
-                // If set to 'buffer', values will be returned as raw buffer objects.
-                encoding: 'utf8',
-                keyEncoding: 'utf8'
-            }
-            let consumer = new Consumer(client,payload,option);
-        ```
-
+    `kafka-node`: [使用方法](./kafka-node.md)
 
 
 ## 相关网站
