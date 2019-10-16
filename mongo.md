@@ -4,15 +4,15 @@
 
 ```
 db.createUser({
-    user: username,// 当前库 登录名
+    user: username, // 当前库 登录名
     pwd: password, // 当前库 登录密码
-    roles: [{ 
-        role:       // 当前用户对应库 权限
-        db: db name // 对应库名称
+    roles: [{
+        role: role,  // 当前用户对应库 权限
+        db: dbName, // 对应库名称
     }]
 })
 ```
-## 用户权限
+## 用户权限(role)
  * ` Read `：允许用户读取指定数据库
  * ` readWrite `：允许用户读写指定数据库
  * ` dbAdmin `：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile
@@ -47,8 +47,8 @@ db.createUser({
         --jsonArray filename.json
     ```
     
- ## 代码相关
- 
+## 代码相关
+
   ### 基本数据类型
 
 EN|CH
@@ -68,8 +68,8 @@ Object ID|对象ID (用于创建文档的ID)
 Binary Data|二进制数据
 Code| 代码(用于存储JS代码)
 Regular expression|正则表达式
-    
-  ### 操作符
+
+### 操作符
 
 操作|名称
 ---|---
