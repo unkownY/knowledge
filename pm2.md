@@ -10,15 +10,15 @@ pm2 flush
 
 ## 在 _cluster_ 模式下,合并每个进程的 _log_
 ```js
-    module.exports = {
-      apps: [{
-          name: 'app',
-          script: 'app.js',
-          output: './out.log',
-          error: './error.log',
-          merge_logs: true, // 添加这一句
-        }]
-    }
+module.exports = {
+    apps: [{
+        name: 'app',
+        script: 'app.js',
+        output: './out.log',
+        error: './error.log',
+        merge_logs: true, // 添加这一句
+    }]
+}
 ```
 
 ## 日志 滚动
