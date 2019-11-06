@@ -1,22 +1,28 @@
 # Node Cron
 
-## Getting Started
-* 安装 **node-cron**
-    ```shell
-    $ npm install --save node-cron
-    ```
-* Import node-cron and schedule a task:
-    ```node
-    var cron = require('node-cron');
-    
-    cron.schedule('* * * * *', () => {
-        console.log('running a task every minute');
-    });
-    ```
-## Cron Syntax
-This is a quick reference to cron syntax and also shows the options supported by node-cron.
+## 起点在这(Getting Started)
 
-### Allowed fields
+* 安装 **node-cron**
+
+```shell
+$ npm install --save node-cron
+```
+
+* 引入 `node-ceon` 并开始一个定时任务:
+
+```node
+var cron = require('node-cron');
+
+cron.schedule('* * * * *', () => {
+    console.log('running a task every minute');
+});
+```
+
+## Cron 时间表达式(expression)
+
+快速预览 **cron** 语法,同时介绍`node-cron`的参数支持
+
+### 允许 时间字段
 ```
  # ┌────────────── second (optional)
  # │ ┌──────────── minute
@@ -28,7 +34,8 @@ This is a quick reference to cron syntax and also shows the options supported by
  # │ │ │ │ │ │
  # * * * * * *
 ```
-### Allowed values
+
+### 允许 时间值()
 
 field |value
 ---|---
@@ -36,137 +43,148 @@ second|0-59
 minute|0-59
 hour|0-23
 day of month|1-31
-month|1-12 (or names)
-day of week|0-7 (or names, 0 or 7 are sunday)
+month|1-12 (或者 january等月份单词)
+day of week|0-7 (或者是 monday等星期单词, 0和7是sunday)
 
-### Using multiples values
-You may use multiples values separated by comma:
+### 使用多个值
+
+同时使用多个值,使用逗号`,`分隔
 
 ```node
 var cron = require('node-cron');
 
 cron.schedule('1,2,4,5 * * * *', () => {
-    console.log('running every minute 1, 2, 4 and 5');
+    console.log('每到分钟数等于 1,2,4,5 时执行一次任务');
 });
 ```
 
-### Using ranges
-You may also define a range of values:
+### 使用时间范围
+
+定义一个时间段
+
 ```node
 var cron = require('node-cron');
  
 cron.schedule('1-5 * * * *', () => {
-  console.log('running every minute to 1 from 5');
+  console.log('每到分钟数等于 1,2,3,4,5 时执行一次任务');
 });
 ```
 
-### Using step values
-Step values can be used in conjunction with ranges, following a range with '/' and a number. e.g: `1-10/2` that is the same as `2,4,6,8,10`. Steps are also permitted after an asterisk, so if you want to say “every two minutes”, just use `*/2`.
+### 使用分段值
+
+分段值支持和范围值配合,后面紧跟着`/`,例如:`1-10/2`等同`2,4,6,8,10`.<br>
+分段值同时支持配合星号`*`,`*/2`意味着每两分钟执行一次.
+
 ```node
 var cron = require('node-cron');
  
 cron.schedule('*/2 * * * *', () => {
-  console.log('running a task every two minutes');
+  console.log('每两分钟执行一次');
 });
 ```
 
-### Using names
-For month and week day you also may use names or short names. e.g:
+### 使用时间单词
+
+表示月份和星期时,也可以直接使用单词和简写
+
 ```node
 var cron = require('node-cron');
  
 cron.schedule('* * * January,September Sunday', () => {
-  console.log('running on Sundays of January and September');
+  console.log('在 一月和九月 的 星期天 执行一次');
 });
 ```
 
-Or with short names:
+或者使用简写
 ```node
 var cron = require('node-cron');
  
 cron.schedule('* * * Jan,Sep Sun', () => {
-  console.log('running on Sundays of January and September');
+  console.log('在 一月和九月 的 星期天 执行一次');
 });
 ```
 
-## Cron methods
+## Cron 函数
 
-### Schedule
+### 定时
 
-Schedules given task to be executed whenever the cron expression ticks.
+任务在时间表达式匹配时进行执行
 
 Arguments:
 
-* **expression** `string`: Cron expression
-* **function** `Function`:Task to be executed
-* **options** `Object`:Optional configuration for job scheduling.
+* **expression** `string`: Cron 表达式
+* **function** `Function`: 需要执行的任务
+* **options** `Object`: 参数
 
-### Options
+### 参数(options)
 
-* **scheduled**: A boolean to set if the created task is schaduled. Default true;
-* **timezone**: The timezone that is used for job scheduling;
+* **scheduled**: 在定时任务创建时,是否直接启动定时,默认值: `true`,布尔类型(Boolean)
+* **timezone**: 定时任务所使用的时区
 
-### Example:
+### 完整例子:
 
 ```node
 var cron = require('node-cron');
 
 cron.schedule('0 1 * * *', () => {
-    console.log('Runing a job at 01:00 at America/Sao_Paulo timezone');
+    console.log('在 01:00 执行任务,使用 美国/圣保罗 时区');
 }, {
     scheduled: true,
     timezone: "America/Sao_Paulo"
 });
 ```
-## ScheduledTask methods
+## 定时任务的方法(Methods)
 
 ### Start
 
-Starts the scheduled task.
+开始一个定时任务<br>
 
 ```node
 var cron = require('node-cron');
 
 var task = cron.schedule('* * * * *', () =>  {
-    console.log('stoped task');
+    console.log('当前任务不自动执行');
 }, {
     scheduled: false
 });
  
+// 开始执行任务
 task.start();
 ```
 
 ### Stop
 
-The task won't be executed unless re-started.
+任务停止执行,知道任务重新开始(start)
 
 ```node
 var cron = require('node-cron');
  
 var task = cron.schedule('* * * * *', () =>  {
-  console.log('will execute every minute until stopped');
+  console.log('当前任务每分钟执行一次,直到停止');
 });
  
+// 停止执行当前任务
 task.stop();
 ```
 
 ### Destroy
 
-The task will be stopped and completely destroyed.
+当前任务被停止,并且被完全销毁
 
 ```node
 var cron = require('node-cron');
  
 var task = cron.schedule('* * * * *', () =>  {
-  console.log('will not execute anymore, nor be able to restart');
+  console.log('删除当前任务,永远不能再开始');
 });
  
+// 删除当前任务
 task.destroy();
 ```
 
 ### Validate
 
-Validate that the given string is a valid cron expression.
+验证给定的字符串是不是一个可用 cron 表达式(expression)
 
 ```node
 var cron = require('node-cron');
