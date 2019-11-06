@@ -1,6 +1,7 @@
 # [knowledge](https://unkowny.github.io/knowledge/)
 
 ## 程序员的我
+  * [使用过的 npm 包](./technology/npm/npm.md)
   * [mongodb](./technology/mongo.md)
   * [redis](./technology/redis.md)
   * [log4js](./technology/log4js.md)
