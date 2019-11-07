@@ -22,3 +22,15 @@
             --winCodeSign-1.9.0
                 解压winCodeSign-1.9.0.7z所得文件
 ```
+
+## 创建 electron-vue 项目
+```shell
+    # 安装 vue-cli 和 脚手架样板代码
+    npm install -g vue-cli
+    vue init simulatedgreg/electron-vue my-project
+
+    # 安装依赖并运行你的程序
+    cd my-project
+    yarn # 或者 npm install
+    yarn run dev # 或者 npm run dev
+```
