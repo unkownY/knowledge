@@ -34,3 +34,23 @@
     yarn # 或者 npm install
     yarn run dev # 或者 npm run dev
 ```
+
+## 问题处理
+
+* `Html Webpack Plugin: ReferenceError: process is not defined`
+    
+    在文件 `.electron-vue/webpack.web.config.js` 和 `.electron-vue/webpack.renderer.config.js`中添加
+    ```js
+        templateParameters(compilation, assets, options) {
+            return {
+                compilation: compilation,
+                webpack: compilation.getStats().toJson(),
+                webpackConfig: compilation.options,
+                htmlWebpackPlugin: {
+                    files: assets,
+                    options: options
+                },
+                process,
+            };
+        },
+    ```
