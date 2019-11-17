@@ -37,10 +37,13 @@
 
 ## 问题处理
 
-* `Html Webpack Plugin: ReferenceError: process is not defined`
-    
-    在文件 `.electron-vue/webpack.web.config.js` 和 `.electron-vue/webpack.renderer.config.js`中添加
-    ```js
+* 错误提示: `Html Webpack Plugin: ReferenceError: process is not defined`
+    * 修改位置: 
+        * `.electron-vue/webpack.web.config.js`
+        * `.electron-vue/webpack.renderer.config.js`
+    * 修改内容
+
+        ```js
         templateParameters(compilation, assets, options) {
             return {
                 compilation: compilation,
@@ -53,4 +56,4 @@
                 process,
             };
         },
-    ```
+        ```

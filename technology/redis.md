@@ -10,5 +10,5 @@ auth passwd                     # 输入密码进行授权
 
 ## 使用
 
-* `node` : [ioredis](https://github.com/luin/ioredis)
+* `Nodejs` : [ioredis](https://github.com/luin/ioredis)
 
