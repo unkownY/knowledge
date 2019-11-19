@@ -4,7 +4,7 @@
 
 ## 配置及使用
 
-```javascript
+```js
 const log4js = require('log4js');
 //log4js 配置
 log4js.configure({

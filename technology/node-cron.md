@@ -1,4 +1,5 @@
 # Node Cron
+> 定时任务
 
 ## 起点在这(Getting Started)
 
@@ -10,7 +11,7 @@ $ npm install --save node-cron
 
 * 引入 `node-ceon` 并开始一个定时任务:
 
-```node
+```js
 var cron = require('node-cron');
 
 cron.schedule('* * * * *', () => {
