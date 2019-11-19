@@ -12,6 +12,14 @@ npm install nodemailer
 ## 例子
 
 ```js
+/**
+ * 用于GPS,角度转弧度
+ */
+inner.rad = d => Number(d) * Math.PI / 180.0;
+```
+
+
+```js
 let {
     targets, // 收件人 数组或字符串
     title, // 标题
