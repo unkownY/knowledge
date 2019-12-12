@@ -1,5 +1,10 @@
 # [redis](https://redis.io/)
 
+## 安装
+```js
+sudo apt-get install redis-server
+```
+
 ## redis 设置验证
 
 ```redis
