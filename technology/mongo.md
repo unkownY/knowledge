@@ -4,11 +4,11 @@
 
 ```
 db.createUser({
-    user: username, // 当前库 登录名
-    pwd: password, // 当前库 登录密码
+    user: 'admin',
+    pwd: '_nJ*m?g5TK&(UF3S',
     roles: [{
-        role: role,  // 当前用户对应库 权限
-        db: dbName, // 对应库名称
+        role: 'root', 
+        db: 'admin',
     }]
 })
 ```
