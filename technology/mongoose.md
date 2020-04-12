@@ -35,3 +35,7 @@
         'gps':{$near:gps}
     })
 ```
+## 去重查询
+```node
+    let oidArr = await DBNAME.distinct('oid');
+```
