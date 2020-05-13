@@ -1,7 +1,7 @@
 #  node.js相关代码片段
 
-1. 图片下载
-    ```js
+## 图片下载
+```js
     const superagent = require('superagent');
     const fs = require('fs');
     const path = require('path');
@@ -27,11 +27,10 @@
     let destination = path.join(__dirname,fileName);
 
     fs.writeFileSync(destination,res.body);
+```
 
-    ```
-
-1. 计算倒计时
-    ```js
+## 计算倒计时
+```js
     /**
     * 计算倒计时
     * @param {Date} cd 上次记录的恢复结束时间
@@ -62,5 +61,47 @@
         }
 
         return {success:true,data:{count,'cd':new Date(cd)}};
+    };
+```
+
+## 时间相关
+
+1. 本地时间字符串
+    ```node
+    let localeDateString = (timestamp) => {
+        let day = new Date();
+        try{
+            if(timestamp) day = new Date(timestamp);
+        }catch(e){
+            day = new Date();
+        }
+        return `${day.getFullYear()}-${day.getMonth()+1}-${day.getDate()}`;
+    };
+    ```
+
+1. 获取时间戳
+    *  今天 0点 时间戳
+        ```node
+            let today0 = () => {
+                let today = new Date();
+                today.setHours(0,0,0,0);
+                return today.getTime();
+            };
+        ```
+    * 明天 0点 时间戳
+        ```node
+            let tomorrow0 = () => 57600000-Date.now()%86400000;
+        ```
+
+1. 今天 剩余时间 (ms)
+    ```node
+    /**
+    * @params {String} rtype 获取剩余时间的格式(ms:毫秒,s:秒)
+    */
+    let todayRemain = (rtype = 'ms') => {
+        let today = new Date();
+        today.setHours(23,59,59);
+        let result = today.getTime()+1-Date.now(); // 今天 24 点
+        return rtype === 's'?parseInt(result/1000):result;
     };
     ```
