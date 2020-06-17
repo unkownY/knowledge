@@ -49,7 +49,7 @@ db.createUser({
     
 ## 代码相关
 
-  ### 基本数据类型
+### 基本数据类型
 
 EN|CH
 ---|---
@@ -87,6 +87,36 @@ $and|例:$and:[{l:1},{k:1}]
 $not|例:$not:/^[a-z]$/
 $nor|例:$nor:[{l:1},{k:1}]
 $or|例:$or:[{l:1},{k:1}]
+
+### 聚合查询
+
+#### 聚合计算
+
+操作|名称|示例
+---|---|---
+`$sum` | 计算总和。 | `db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : "$likes"}}}])`
+`$avg` | 计算平均值 | `db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$avg : "$likes"}}}])`
+`$min` | 获取集合中所有文档对应值得最小值。 | `db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$min : "$likes"}}}])`
+`$max` | 获取集合中所有文档对应值得最大值。 | `db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$max : "$likes"}}}])`
+`$push` | 在结果文档中插入值到一个数组中。 | `db.mycol.aggregate([{$group : {_id : "$by_user", url : {$push: "$url"}}}])`
+`$addToSet` | 在结果文档中插入值到一个数组中，但不创建副本。 | `db.mycol.aggregate([{$group : {_id : "$by_user", url : {$addToSet : "$url"}}}])`
+`$first` | 根据资源文档的排序获取第一个文档数据。 | `db.mycol.aggregate([{$group : {_id : "$by_user", first_url : {$first : "$url"}}}])`
+`$last` | 根据资源文档的排序获取最后一个文档数据 | `db.mycol.aggregate([{$group : {_id : "$by_user", last_url : {$last : "$url"}}}])`
+
+#### 聚合管道
+
+
+操作|名称
+---|---
+`$project` | 修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。
+`$match` | 用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。
+`$limit` | 用来限制MongoDB聚合管道返回的文档数。
+`$skip` | 在聚合管道中跳过指定数量的文档，并返回余下的文档。
+`$unwind` | 将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。
+`$group` | 将集合中的文档分组，可用于统计结果。
+`$sort` | 将输入文档排序后输出。
+`$geoNear` | 输出接近某一地理位置的有序文档。
+
 
 ### 安装
 
