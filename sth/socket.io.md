@@ -74,3 +74,24 @@
                 query:{id:'1'} // 这个是query传参,和设置无关
             });
         ```
+* socket加入房间 / 分房间
+    ```node
+        // 获取房间参数
+        let thisroom = socket.handshake.query.room;
+        // 被动加入房间
+        socket.join(thisroom);
+        // 主动触发
+        socket.on('changeRoom',(res)=>{
+            // 主动加入房间
+            socket.join(res,(res)=>{
+                console.log('changeRoom-rooms',socket.rooms);
+                // 查看房间内的套接字个数
+                io.of('/').to(thisroom).clients((error, clients) => {
+                    if (error) throw error;
+                    console.log('---',clients);
+                    // 满足条件,通知加载完成
+                    if(clients.length>=2) socket.to(thisroom).emit('loadingDown','Hello World.');
+                });
+            });
+        });
+    ```
