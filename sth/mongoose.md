@@ -35,7 +35,21 @@
         'gps':{$near:gps}
     })
 ```
+
 ## 去重查询
+
 ```node
     let oidArr = await DBNAME.distinct('oid');
+```
+
+## 聚合查询
+
+```node
+let data = await AlarmReport.aggregate([
+    {$match: {'ip':{'$nin':['',null]}}}, // 条件查询
+    {$group: {'_id': '$ip', count: {$sum: 1}}}, // 分组(以ip为键,统计个数)
+    {$project: {'_id': 0, 'ip': '$_id', 'count': 1}}, // 返回值(显示ip,count)
+    {$sort: {'count': -1}}, // 排序(按照count进行反向排序)
+    {$limit:3}, // 截取个数
+]);
 ```
