@@ -12,7 +12,7 @@ sudo apt-get install redis-server
     ```
     * 下载编译
     ```
-    wget wget http://download.redis.io/releases/redis-5.0.7.tar.gz
+    wget http://download.redis.io/releases/redis-5.0.7.tar.gz
     tar xzf redis-5.0.7.tar.gz
     cd redis-5.0.7
     make 
