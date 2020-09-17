@@ -1,5 +1,16 @@
 #  node.js相关代码片段
 
+## base64互转
+```js
+    // 转成 base64
+    let img = await superagent.get(image).then(e=>e.body);
+    let buffer = Buffer.from(img);
+    let data = buffer.toString('base64');
+    // base64 转回
+    let buffer = Buffer.from(base64_str,'base64');
+    let data = buffer.toString(');
+```
+
 ## 图片下载
 ```js
     const superagent = require('superagent');
