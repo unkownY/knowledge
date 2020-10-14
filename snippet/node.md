@@ -8,7 +8,7 @@
     let data = buffer.toString('base64');
     // base64 转回
     let buffer = Buffer.from(base64_str,'base64');
-    let data = buffer.toString(');
+    let data = buffer.toString();
 ```
 
 ## 图片下载
